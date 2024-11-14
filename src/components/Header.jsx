@@ -27,7 +27,7 @@ export const Header = () => {
         setDraweropen(false)
     }
 
-    const headersData = ["Mi cuenta","Reservas anteriores","Cerrar sesión"]
+    const headersData = ["Partida de Juego","Recomendaciones","Ranking","Cerrar sesión"]
     const getDrawerChoices = () => { 
         return headersData.map((data)=>{
             return (
@@ -62,10 +62,7 @@ export const Header = () => {
             </Link>
             <div className={classes.right}>
             <Link to="/login"><Button><Typography>iniciar sesión</Typography></Button></Link>
-            </div>
-            <div className={classes.right}>
-            <Link to="/Registro"><Button>Registrarse</Button></Link>
-                <Avatar className={classes.avatar}/>
+            <Link to="/Registro"><Button><Typography>Registrarse</Typography></Button></Link>
             </div>
     </Toolbar>
    )
