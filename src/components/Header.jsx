@@ -81,16 +81,13 @@ export const Header = () => {
             <SearchIcon/>
             </div> 
             <div className={classes.right}>
-                <Link to="/" className={classes.Requisito}><Typography>Partida Juego</Typography></Link>
+                <Link to="/Partida" className={classes.Requisito}><Typography>Partida de Juego</Typography></Link>
             </div>
             <div className={classes.right}>
-                <Link to="/" className={classes.Requisito}><Typography>Recomendaciones</Typography></Link>
+                <Link to="/Recomendaciones" className={classes.Requisito}><Typography>Recomendaciones</Typography></Link>
             </div>
             <div className={classes.right}>
-                <Link to="/" className={classes.Requisito}><Typography>Ranking</Typography></Link>
-            </div>
-            <div className={classes.right}>
-                <Link to="/" className={classes.Requisito}><Typography>Modelo IA</Typography></Link>
+                <Link to="/Ranking" className={classes.Requisito}><Typography>Ranking</Typography></Link>
             </div>
             <div className={classes.right}>
                 <Link to="/login" className={classes.Requisito}><Typography>Iniciar sesión</Typography></Link>
@@ -156,9 +153,9 @@ const useStyles = makeStyles((theme) => ({
   },
   Requisito:{
     display: "flex",
-    alignItems: "center", // Alineación del texto o contenido dentro de la sección
-    textDecoration: "none", // Elimina subrayado si lo hay
-    color: "#4CAF50", // Verde para el color del texto
+    alignItems: "center", 
+    textDecoration: "none", 
+    color: "#4CAF50", 
   },
   avatar:{
     marginLeft: theme.spacing(2)
