@@ -10,8 +10,8 @@ export const Banner = () => {
     <>
       <div className={classes.root}>
         <div className={classes.info}>
-          <Typography variant='h2'>¡Vamos a Jugar!... </Typography>
-          <Link to="/Ranking"><Button variant='contained'>Revisa los ranking</Button></Link>
+          <Typography variant='h2'>¡Vamos a Jugar GOLF!... </Typography>
+          <Link to="/Partida"><Button variant='contained'>Registra una partida de 18 hoyos</Button></Link>
         </div>
       </div>
     

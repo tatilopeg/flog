@@ -52,7 +52,7 @@ export const Header = () => {
         </IconButton>
             <Drawer {...{
                 anchor:'left',
-                open: draweropen, //llama al useState, si es false se cierra y true se abre el menu del lado
+                open: draweropen, //llama al useState, si es false se cierra y true se abre el menú del lado
                 onClose: handleDrawerClose,
             }}>
                 <div>{getDrawerChoices()}</div>
