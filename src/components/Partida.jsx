@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Calendar, Clock } from 'lucide-react';
 import '../estilos/Partida.css';
 
 const initialHoleState = {
@@ -64,35 +63,34 @@ export const Partida = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="max-w-4xl w-full p-4 bg-white shadow-md rounded-lg">
-      <h1 className="text-3xl font-bold mb-4 text-center">Partida de Golf</h1>
+    <div className="partida-container">
+      <div className="form-container-partida">
+        <h1 className="titulo-partida">Partida de GOLF</h1>
         <form>
-          <div className="flex flex-col mb-4">
-            <label className="text-lg font-bold mb-2">Fecha:</label>
+          <div className="input-container-partida">
+            <label className="label-partida">Fecha:</label>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="p-2 rounded-lg border border-gray-300"
+              className="input-partida"
             />
           </div>
-          <div className="flex flex-col mb-4">
-            <label className="text-lg font-bold mb-2">Hora Estimada:</label>
+          <div className="input-container-partida">
+            <label className="label-partida">Hora Estimada:</label>
             <input
               type="time"
               value={estimatedTime}
               onChange={(e) => setEstimatedTime(e.target.value)}
-              className="p-2 rounded-lg border border-gray-300"
+              className="input-partida"
             />
-            <Clock className="ml-2" />
           </div>
-          <div className="flex flex-col mb-4">
-            <label className="text-lg font-bold mb-2">Clima:</label>
+          <div className="input-container-partida">
+            <label className="label-partida">Clima:</label>
             <select
               value={weather}
               onChange={(e) => setWeather(e.target.value)}
-              className="p-2 rounded-lg border border-gray-300"
+              className="input-partida"
             >
               <option value="">Seleccione un clima</option>
               <option value="Soleado">Soleado</option>
@@ -100,12 +98,12 @@ export const Partida = () => {
               <option value="Lluvioso">Lluvioso</option>
             </select>
           </div>
-          <div className="flex flex-col mb-4">
-            <label className="text-lg font-bold mb-2">Color de Tee:</label>
+          <div className="input-container-partida">
+            <label className="label-partida">Color de Tee:</label>
             <select
               value={teeColor}
               onChange={(e) => setTeeColor(e.target.value)}
-              className="p-2 rounded-lg border border-gray-300"
+              className="input-partida"
             >
               <option value="">Seleccione un color de tee</option>
               <option value="Negras">Negras</option>
@@ -116,23 +114,23 @@ export const Partida = () => {
             </select>
           </div>
           {holes.map((hole, index) => (
-            <div key={index} className="bg-gray-100 p-4 mb-4 rounded-lg">
-              <h2 className="text-2xl font-bold mb-2 text-center">Hoyo {index + 1}</h2>
-              <div className="flex flex-col mb-4">
-                <label className="text-lg font-bold mb-2">Distancia:</label>
+            <div key={index} className="hole-container">
+              <h2 className="hoyo-titulo">Hoyo {index + 1}</h2>
+              <div className="input-container-partida">
+                <label className="label-partida">Distancia:</label>
                 <input
                   type="text"
                   value={getDistance(index)}
                   readOnly
-                  className="p-2 rounded-lg border border-gray-300"
+                  className="input-partida"
                 />
               </div>
-              <div className="flex flex-col mb-4">
-                <label className="text-lg font-bold mb-2">Ubicación de la bandera:</label>
+              <div className="input-container-partida">
+                <label className="label-partida">Ubicación de la bandera:</label>
                 <select
                   value={hole.flagLocation}
                   onChange={(e) => handleHoleChange(index, 'flagLocation', e.target.value)}
-                  className="p-2 rounded-lg border border-gray-300"
+                  className="input-partida"
                 >
                   <option value="">Seleccione una ubicación</option>
                   <option value="Centro">Centro</option>
@@ -140,64 +138,50 @@ export const Partida = () => {
                   <option value="Atrás">Atrás</option>
                 </select>
               </div>
-              <div className="flex flex-col mb-4">
-                <label className="text-lg font-bold mb-2">Palos utilizados:</label>
-                <div className="palos-container">
-                  <ul>
-                    {[
-                      'Driver',
-                      'Hibrido',
-                      'Madera3',
-                      'Madera5',
-                      'Hierro2',
-                      'Hierro3',
-                      'Hierro4',
-                      'Hierro5',
-                      'Hierro6',
-                      'Hierro7',
-                      'Hierro8',
-                      'Hierro9',
-                      'Pitching Wedge',
-                      'Sand Wedge',
-                      'Putt',
-                      'Castigo',
-                    ].map((club, clubIndex) => (
-                      <li key={club} className="palo-item">
+              <div className="clubs-container">
+                <label className="label-partida">Palos utilizados:</label>
+                <ul className="clubs-list">
+                  {['Driver', 'Hibrido', 'Madera3', 'Madera5', 'Hierro2', 'Hierro3', 'Hierro4', 'Hierro5', 'Hierro6', 'Hierro7', 'Hierro8', 'Hierro9', 'Pitching Wedge', 'Sand Wedge', 'Putt', 'Castigo'].map((club, clubIndex) => (
+                    <li key={club} className="club-item">
+                      <input
+                        type="checkbox"
+                        checked={hole.clubsUsed.includes(club)}
+                        onChange={(e) => handleClubChange(index, club, e.target.checked)}
+                        className="club-checkbox"
+                      />
+                      <span className="club-name">{club}</span>
+                      {hole.clubsUsed.includes(club) && (
                         <input
-                          type="checkbox"
-                          checked={hole.clubsUsed.includes(club)}
-                          onChange={(e) => handleClubChange(index, club, e.target.checked)}
+                          type="number"
+                          value={hole.quantity[hole.clubsUsed.indexOf(club)] || ''}
+                          onChange={(e) =>
+                            handleQuantityChange(index, hole.clubsUsed.indexOf(club), e.target.value)
+                          }
+                          className="quantity-input" 
+                          placeholder="# de veces" 
+                          
                         />
-                        <span className="ml-2">{club}</span>
-                        {hole.clubsUsed.includes(club) && (
-                          <input
-                            type="number"
-                            value={hole.quantity[hole.clubsUsed.indexOf(club)] || ''}
-                            onChange={(e) =>
-                              handleQuantityChange(index, hole.clubsUsed.indexOf(club), e.target.value)
-                            }
-                            className="p-2 rounded-lg border border-gray-300 w-12"
-                          />
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="flex flex-col mb-4">
-                <label className="text-lg font-bold mb-2">Golpes totales:</label>
+              <div className="input-container-partida">
+                <label className="label-partida">Golpes totales del hoyo {index + 1} :</label>
                 <input
                   type="number"
                   value={hole.totalStrokes}
                   readOnly
-                  className="p-2 rounded-lg border border-gray-300"
+                  className="input-partida"
                 />
               </div>
             </div>
           ))}
+          <button type="button" className="guardar-btn">Guardar Partida</button>
         </form>
       </div>
     </div>
   );
+
 };
 

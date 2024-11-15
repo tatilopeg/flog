@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Avatar, Drawer, IconButton, InputBase, List, Toolbar, Typography, makeStyles,ListItem, Button } from '@material-ui/core';
+import { AppBar, Drawer, IconButton, InputBase, List, Toolbar, Typography, makeStyles,ListItem, Button } from '@material-ui/core';
 import logo from "../imagenes/logo.png";
 import perfil from "../imagenes/perfil.png";
 import SearchIcon from "@material-ui/icons/Search";
@@ -27,7 +27,7 @@ export const Header = () => {
         setDraweropen(false)
     }
 
-    const headersData = ["Partida de Juego","Recomendaciones","Ranking","Cerrar sesión"]
+    const headersData = ["Partida de GOLF","Recomendaciones","Ranking","Cerrar sesión"]
     const getDrawerChoices = () => { 
         return headersData.map((data)=>{
             return (
@@ -78,7 +78,7 @@ export const Header = () => {
             <SearchIcon/>
             </div> 
             <div className={classes.right}>
-                <Link to="/Partida" className={classes.Requisito}><Typography>Partida de Juego</Typography></Link>
+                <Link to="/Partida" className={classes.Requisito}><Typography>Partida de GOLF</Typography></Link>
             </div>
             <div className={classes.right}>
                 <Link to="/Recomendaciones" className={classes.Requisito}><Typography>Recomendaciones</Typography></Link>
